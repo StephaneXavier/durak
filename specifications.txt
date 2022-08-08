@@ -1,0 +1,7 @@
+Requires the following classes:
+- Game: overall class for each game played;
+- Player;
+- Card;
+- Round: multiple rounds per game;
+
+
