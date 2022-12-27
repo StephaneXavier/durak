@@ -8,6 +8,7 @@ let card6;
 let cardsOnTable;
 let userInterface;
 let defenderOptionStub = { value: false };
+let p2;
 
 beforeEach(() => {
     userInterface = {
@@ -22,7 +23,8 @@ beforeEach(() => {
     card6 = new Card({ value: "KING", suit: "CLUBS", code: "KC" });
 
     cardsOnTable = [new Card({ value: "KING", suit: "HEARTS", code: "KH" })];
-    p1 = new Player({ userInterface: userInterface, cardsInHand: [card1, card2, card3, card4, card5, card6] })
+    p2 = new Player({ userInterface: userInterface, cardsInHand: [card3] })
+    p1 = new Player({ userInterface: userInterface, cardsInHand: [card1, card2, card3, card4, card5, card6], nextPlayer: p2 })
 
 })
 
@@ -44,5 +46,12 @@ describe('doYouPass works', () => {
         defenderOptionStub.value = [card1, card6]
         expect(p1.doYouPass(cardsOnTable)).toEqual([card1, card6])
         expect(p1.cardsInHand.length).toBe(4)
+    })
+})
+
+describe('nextPlayer', () => {
+    test('nextPlayer returns the player on the left', () => {
+        expect(p1.nextPlayer.cardsInHand.length).toBe(1)
+        expect(p1.nextPlayer).toMatchObject(p2)
     })
 })

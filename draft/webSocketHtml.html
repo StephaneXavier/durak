@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draft websocket</title>
+</head>
+<body>
+              <!-- INPUT -->
+              <div>
+                <input id="message-input" type="text" placeholder="Enter your message">
+                <a onclick="sendMessage()" href="#">Send!</a>
+              </div>
+              <!-- INPUT -->
+              <div>
+                <input id="username-input" type="text" placeholder="Enter your username">
+                <a onclick="sendUsername()" href="#">Send!</a>
+              </div>
+
+
+    <div id="messages-box"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="./clientSideWebSocket.js"></script>
+</body>
+</html>

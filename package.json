@@ -1,15 +1,29 @@
 {
-  "name": "durak",
+  "name": "y",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "supertest": "^6.2.4"
-  }
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "supertest": "^6.2.4",
+    "uuid": "^9.0.0",
+    "ws": "^8.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StephaneXavier/durak.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StephaneXavier/durak/issues"
+  },
+  "homepage": "https://github.com/StephaneXavier/durak#readme",
+  "description": ""
 }

@@ -1,8 +1,9 @@
 class Player {
 
-    constructor({ userInterface, cardsInHand = []}) {
+    constructor({ userInterface, cardsInHand = [], nextPlayer}) {
         this.cardsInHand = cardsInHand
         this.userInterface = userInterface
+        this.nextPlayer = nextPlayer
     };
 
     playCards(cardsToPlay) {
@@ -18,7 +19,7 @@ class Player {
             this.playCards(input)
         }
         return input
-    }
+    }    
 }
 
 

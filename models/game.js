@@ -6,16 +6,18 @@ class Game {
      this.trump = trump
     };
 
-    start(){
-        for(let player in this.players){
-            player.hand
-        }
-    }
+    
+
+
+    
 
 }
 
 
-
+// 1. create a game (generate a Game with an ID) (REST POST /new_game)
+// 2. while Game has less than 4 players, don't do anything (REST POST :game_id/join) (REST GET :game_id/game)
+// 3. When Game has 4 players, than one player can start the game (REST POST :game_id/start_game)
+// 4. 
 
 
 
