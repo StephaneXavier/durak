@@ -1,29 +1,16 @@
 "use strict";
-const { v4: uuidv4 } = require('uuid');
 const express = require("express");
 const app = express();
 const wsExpress = require('express-ws')(app);
 
 const ROOMS = {}
 
-
 app.use(express.json());
-
-app.set('view engine', 'ejs')
-
-app.use("/public", express.static('static'))
-
-app.get('/', function (req, res, next) {
-    console.log('On the home page')
-    const roomName = uuidv4();
-    res.render('createGame', { roomName })
-})
 
 app.ws('/room/:roomName', function (client, req, next) {
     const roomName = req.params.roomName;
+    console.log('in the app.ws /room/roomName', roomName)
 
-
-    
     if (ROOMS[roomName] && ROOMS[roomName].length == 2) {
         console.log("full")
         
@@ -51,11 +38,6 @@ app.ws('/room/:roomName', function (client, req, next) {
         updateNumPlayers(roomName)
     })
 
-})
-
-app.get('/room/:roomName', function (req, res, next) {
-    const roomName = req.params.roomName
-    res.render('room', { roomName })
 })
 
 function updateNumPlayers(roomName) {
