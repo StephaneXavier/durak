@@ -30,6 +30,10 @@ app.ws('/room/:roomName', function (client, req, next) {
 
     console.log(`there are ${ROOMS[roomName].length} players in the room ${roomName}`)
 
+    client.on('message', function(msg) {
+        console.log('Message received from client (frontend):',msg)
+    })
+
     client.on('close', function (data) {
         console.log('client getting ready to leave', ROOMS[roomName].length)
         const clientPosition = ROOMS[roomName].indexOf(client)
