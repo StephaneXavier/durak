@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import useWebSocket from 'react-use-websocket';
 import {React, useState } from "react";
-const WS_URL = 'ws://localhost:3002/room/:roomName'
+const WS_URL = 'ws://localhost:3002/room/'
 
 
 const Game = () => {
@@ -9,7 +9,7 @@ const Game = () => {
     const [numberOfPlayers, setNumberOfPlayers] = useState(0)
     const navigate = useNavigate()
     const {gameRoomId} = useParams();
-    useWebSocket(WS_URL, {
+    useWebSocket(WS_URL + gameRoomId, {
         onOpen: (evt) => {
             console.log('WebSocket connection established.');
             console.log('onOpen evt', evt)

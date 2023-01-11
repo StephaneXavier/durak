@@ -37,7 +37,7 @@ app.ws('/room/:roomName', function (client, req, next) {
         console.log('client has left', ROOMS[roomName].length)
         updateNumPlayers(roomName)
     })
-
+    
 })
 
 function updateNumPlayers(roomName) {
