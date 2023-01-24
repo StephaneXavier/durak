@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CreateNewGameButton = ({numberOfPlayers, startGameMessageToServer}) => {
+const CreateNewGameButton = ({numberOfPlayers, sendJsonMessage}) => {
 
 const onClick = () => {
     console.log('click in child')
-    startGameMessageToServer()
+    sendJsonMessage({type:'startGame'})
 }
 
 return (

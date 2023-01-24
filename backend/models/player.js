@@ -1,25 +1,35 @@
 class Player {
 
-    constructor({ userInterface, cardsInHand = [], nextPlayer}) {
+    constructor({ webClient, cardsInHand = [], nextPlayer }) {
         this.cardsInHand = cardsInHand
-        this.userInterface = userInterface
+        this.webClient = webClient
         this.nextPlayer = nextPlayer
+        
     };
 
-    playCards(cardsToPlay) {
-        for (let card of cardsToPlay) {
-            this.cardsInHand = this.cardsInHand.filter(cardInHand => card.code !== cardInHand.code)
-        }
+    send(message) {
+        this.webClient.send(message)
     }
 
-    doYouPass(cardsOnTable) {
-        let input = this.userInterface.selectDefenderOption()
+    giveCards(arrOfCards){
+        this.cardsInHand = arrOfCards;
+        this.send(JSON.stringify({type:'receivedCards', value: arrOfCards}))
+    }
 
-        if (input) {
-            this.playCards(input)
-        }
-        return input
-    }    
+    // playCards(cardsToPlay) {
+    //     for (let card of cardsToPlay) {
+    //         this.cardsInHand = this.cardsInHand.filter(cardInHand => card.code !== cardInHand.code)
+    //     }
+    // }
+
+    // doYouPass(cardsOnTable) {
+    //     let input = this.userInterface.selectDefenderOption()
+
+    //     if (input) {
+    //         this.playCards(input)
+    //     }
+    //     return input
+    // }    
 }
 
 

@@ -1,16 +1,29 @@
+const Deck = require('./deck')
+
 class Game {
 
-    constructor({players,deck, trump}){
-     this.players = players;
-     this.deck = deck;
-     this.trump = trump
+    constructor({ players, deck, trump }) {
+        this.players = players;
+        this.deck = deck;
+        this.trump = trump
     };
 
-    
+    static async start(players) {
+        // debugger
+        const deck = await Deck.newDeck()
+        const game = new Game({ players, deck })
+        await game.distributeInitialCards()
+       
+        return game
+    }
 
-
-    
-
+    async distributeInitialCards(){
+        const cards = await this.deck.drawCards(5*this.players.length)
+        this.players.forEach((player) => {
+            player.giveCards(cards.splice(0,5))
+        } )
+        
+    }
 }
 
 

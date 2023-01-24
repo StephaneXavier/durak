@@ -14,13 +14,17 @@ const Game = () => {
     const {sendJsonMessage} = useWebSocket(WS_URL + gameRoomId, {
         onOpen: (evt) => {
             console.log('WebSocket connection established.');
-            console.log('onOpen evt', evt)
+            
         },
         onMessage: (evt) => {
-            console.log('onMessage evt', evt)
+            console.log('onMessage evt')
             const parsedData = JSON.parse(evt.data)
+           
             if(parsedData.type == "numberOfPlayers"){
                 setNumberOfPlayers(parsedData.value)
+            }
+            if(parsedData.type ==="receivedCards"){
+                console.log('here are your cards', parsedData.value)
             }
         },
         onClose: (evt) => {
@@ -32,16 +36,12 @@ const Game = () => {
         }
     });
 
-    const startGameMessageToServer = () => {
-        console.log('click in parent')
-        sendJsonMessage('test')
-    }
-
+    
     return(
         <>
         <h1>Welcome to game {gameRoomId}</h1>
         <h1> Current players in rooom: {numberOfPlayers}</h1>
-        <CreateNewGameButton numberOfPlayers={numberOfPlayers} startGameMessageToServer = {startGameMessageToServer}/>
+        <CreateNewGameButton numberOfPlayers={numberOfPlayers} sendJsonMessage = {sendJsonMessage}/>
         
         </>
     )
