@@ -1,5 +1,5 @@
-const CardsOnTable = require('./cardsOnTable');
-const Card = require('./card')
+const CardsOnTable = require('../../models/cardsOnTable');
+const Card = require('../../models/card')
 
 let table;
 let card1;
