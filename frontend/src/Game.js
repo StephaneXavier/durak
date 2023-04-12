@@ -2,13 +2,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import useWebSocket from 'react-use-websocket';
 import { React, useState } from "react";
 import Card from "./Card";
+import PlayerHand from "./PlayerHand";
 import CreateNewGameButton from './CreateNewGameButton'
 const WS_URL = 'ws://localhost:3002/room/'
 
 
 const Game = () => {
 
-    const [numberOfPlayers, setNumberOfPlayers] = useState(0)
+    const [numberOfPlayers, setNumberOfPlayers] = useState(0);
+    const [playerHand, setPlayerHand] = useState([])
     const [trumpCard, setTrumpCard] = useState({});
     const navigate = useNavigate()
     const { gameRoomId } = useParams();
@@ -27,6 +29,7 @@ const Game = () => {
             }
             if (parsedData.type === "receivedCards") {
                 console.log('here are your cards', parsedData.value)
+                setPlayerHand( prevPlayerHand => parsedData.value)
             }
             if (parsedData.type === "trumpCard") {
                 setTrumpCard(prevTrump => parsedData.value)
@@ -48,6 +51,7 @@ const Game = () => {
             <h1> Current players in rooom: {numberOfPlayers}</h1>
             <CreateNewGameButton numberOfPlayers={numberOfPlayers} sendJsonMessage={sendJsonMessage} />
             <Card cardInfo={trumpCard} ></Card>
+            <PlayerHand cards = {playerHand}></PlayerHand>
 
 
         </>
