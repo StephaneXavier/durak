@@ -4,7 +4,7 @@ class Player {
         this.cardsInHand = cardsInHand
         this.webClient = webClient
         this.nextPlayer = nextPlayer
-        
+        this.id = Math.random().toString(36).substr(2)
     };
 
     send(message) {

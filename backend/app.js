@@ -27,6 +27,7 @@ app.ws('/room/:roomName', function (client, req, next) {
 
         if (ROOMS[roomName]) {
             ROOMS[roomName].players.push(player)
+            
         } else {
 
             ROOMS[roomName] = { players: [player] }
